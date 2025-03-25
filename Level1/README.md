@@ -3,13 +3,11 @@
 Исходный код в файле ```findorf.py```.
 С помощью него можно найти открытые рамки считывания в точности как сказано в задании. 
 
-Алгоритм: нашли старт-кодон >>> нашли ближайший стоп-кодон в той же последовательности >>> транслируем полученную открутую рамку считывания >>> веррнулись и продолжили на том же месте (+1 нуклеотид) искать старт >>> <...>
+Алгоритм: нашли старт-кодон >>> нашли ближайший стоп-кодон в той же последовательности >>> транслируем полученную открутую рамку считывания >>> вернулись и продолжили на том же месте (+1 нуклеотид) искать старт >>> <...>
 
-__Замечание.__ ORFFinder не выдает последовательности с вложенными (что противорчеит с требованием в задании пункта [5.]). Причем он также убирает вложенные именно из конкретной рамки. То есть если будут две вложенные, то он уберет наименьшую если обе в конкретной рамке. Если же есть вложенные но они в разных рамках, то ничего не удалится на ORF
+__Замечание.__ ORFFinder не выдает последовательности с вложенными (что противорчеит с требованием в пункте [5.]). Причем он также убирает вложенные именно из конкретной рамки. То есть если будут две вложенные, то он уберет наименьшую если обе в конкретной рамке. Если же есть вложенные но они в разных рамках, то ничего не удалится на ORFFinder.
 ORFFinder выдает последовательности также с точностью до реверс-комплементарности (Там их больше)
-ORFFinder показывает последовательности (в лучшем случае) если по крайней мере длины 30 (Мы же ищем всё всё всё[в коде есть решение])
-
-Например для первой последовательности последовательности 
+ORFFinder показывает последовательности (в лучшем случае) если по крайней мере длины 30[Однако с помощью ORFFinder о котором идет речь, можно указать и менее 30] (Мы же ищем всё всё всё)
 
 # Разберём на конкретной последовательности 
 
@@ -17,7 +15,7 @@ ORFFinder показывает последовательности (в лучш
 
 Будем брать оттуда последовательности и сравнивать результаты полученные у нас ```OUTPUT.txt``` и в ORFFinder.
 
-Рассмотрим первую последовательность. Вот что получилось у нас:
+Рассмотрим первую последовательность. Вот, что получилось у нас:
  ``` 
 In sequence 1 found res_num 1.ORF found at base 131 to base 685: ATGCCTCGCCTGTTCTTGTTCCACCTGCTAGAATTCTGTTTACTACTGAACCAATTTTCCAGAGCAGTCGCGGCCAAATGGAAGGACGATGTTATTAAATTATGCGGCCGCGAATTAGTTCGCGCGCAGATTGCCATTTGCGGCATGAGCACCTGGAGCAAAAGGTCTCTGAGCCAGGAAGATGCTCCTCAGACACCTAGACCAGTGGCAGAAATTGTACCATCCTTCATCAACAAAGATACAGAAACTATAATTATCATGTTGGAATTCATTGCTAATTTGCCACCGGAGCTGAAGGCAGCCCTATCTGAGAGGCAACCATCATTACCAGAGCTACAGCAGTATGTACCTGCATTAAAGGATTCCAATCTTAGCTTTGAAGAATTTAAGAAACTTATTCGCAATAGGCAAAGTGAAGCCGCAGACAGCAATCCTTCAGAATTAAAATACTTAGGCTTGGATACTCATTCTCAAAAAAAGAGACGACCCTACGTGGCACTGTTTGAGAAATGTTGCCTAATTGGTTGTACCAAAAGGTCTCTTGCTAAATATTGC 
  	 Translated gene on ptoteome: MPRLFLFHLLEFCLLLNQFSRAVAAKWKDDVIKLCGRELVRAQIAICGMSTWSKRSLSQEDAPQTPRPVAEIVPSFINKDTETIIIMLEFIANLPPELKAALSERQPSLPELQQYVPALKDSNLSFEEFKKLIRNRQSEAADSNPSELKYLGLDTHSQKKRRPYVALFEKCCLIGCTKRSLAKYC 
@@ -109,8 +107,9 @@ ATGAGCACCTGGAGCAAAAGGTCTCTGAGCCAGGAAGATGCTCCTCAGACACCTAGACCAGTGGCAGAAATTGTACCATC
 MSTWSKRSLSQEDAPQTPRPVAEIVPSFINKDTETIIIMLEFIANLPPELKAALSERQPSLPELQQYVPALKDSNLSFEEFKKLIRNRQSEAADSNPSELKYLGLDTHSQKKRRPYVALFEKCCLIGCTKRSLAKYC 
 ```
 
-Он вложен в *ORF 4* (так как его начало сравнимо по модулю 3 с началом ORF 4 - значит в одной рамке *Frame*). Да и к тому же начинается он позже, и намного короче:
+Он вложен в *ORF 4* (так как его начало сравнимо по модулю 3 с началом ORF 4 $ \Longrightarrow $ значит в одной рамке *Frame*). Да и к тому же начинается он позже, и притом он намного короче:
 
 <img src=Screen_seq3.png>
 
 __Tretyakov__ __Ivan__
+__tg: @pheoctist__
